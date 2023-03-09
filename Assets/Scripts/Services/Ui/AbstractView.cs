@@ -9,7 +9,7 @@ namespace Services.Ui {
             _content.SetActive(true);
         }
         
-        public void Hidde() {
+        public void Hide() {
             _content.SetActive(false);
         }
     }

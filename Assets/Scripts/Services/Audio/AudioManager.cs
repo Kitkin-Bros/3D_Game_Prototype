@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,10 @@ namespace Services.Audio {
 
         [SerializeField]
         private Slider _volumeSlider;
-        
+
+        [SerializeField] 
+        private List<AudioClip> _audioClips;
+
 
         private void Start() {
 
@@ -35,6 +39,14 @@ namespace Services.Audio {
             
             _bgAudioSource.volume = value;
             _soundEffectAudioSource.volume = value;
+        }
+
+        public void PlayButtonSound(string audioName) {
+            var audio = _audioClips.Find(v => v.name == audioName);
+            if (audio != null) {
+                _soundEffectAudioSource.clip = audio;
+                _soundEffectAudioSource.Play();
+            }
         }
 
     }
